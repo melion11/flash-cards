@@ -30,8 +30,8 @@ export const CustomAvatar = forwardRef<ElementRef<typeof Avatar.Root>, CustomAva
       : 'A'
 
     return (
-      <Avatar.Root className={classNames.root} ref={ref} {...restProps}>
-        <Avatar.Image className={classNames.image} style={style} src={image} alt="avatar" />
+      <Avatar.Root className={classNames.root} style={style} ref={ref} {...restProps}>
+        <Avatar.Image className={classNames.image} src={image} alt="avatar" />
         <Avatar.Fallback className={classNames.fallback}>
           <Typography variant={'body1'}> {fallbackName} </Typography>
         </Avatar.Fallback>

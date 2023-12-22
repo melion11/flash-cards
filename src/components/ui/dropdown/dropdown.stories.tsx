@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Logout } from '../../../assets'
 import { CustomAvatar } from '../avatar/avatar.tsx'
 
-import { CustomDropdown, DropdownMenuItem } from './dropdown.tsx'
+import { CustomDropdown, DropdownMenuItem, DropdownMenuLabel } from './dropdown.tsx'
 
 const meta = {
   title: 'Components/Dropdown',
@@ -36,24 +36,24 @@ export const Default: Story = {
 
 export const DefaultWithImage: Story = {
   args: {
-    // items: [
-    //   {
-    //     id: '1',
-    //     title: 'LogOut',
-    //     icon: <Logout />,
-    //     disabled: false,
-    //   },
-    // ],
     align: 'end',
     children: (
-      <div style={{ display: 'flex', gap: '5px' }}>
-        <CustomAvatar />
-        <div>
-          <span>userName</span>
-          <span>email: gpfpgpgp@mail.ru</span>
-        </div>
-      </div>
+      <>
+        <DropdownMenuLabel style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <CustomAvatar />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <span>userName</span>
+            <span>email: gpfpgpgp@mail.ru</span>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuItem>
+          <Logout /> LogOut
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Logout /> LogOut
+        </DropdownMenuItem>
+      </>
     ),
-    trigger: <CustomAvatar userName={'Ilya Malav'} />,
+    trigger: <CustomAvatar style={{ cursor: 'pointer' }} userName={'Ilya Malav'} />,
   },
 }

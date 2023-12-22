@@ -33,7 +33,8 @@ button {
     display: flex;
     gap: 6px;
     align-items: center;
-    justify-content: center;
+
+    width: 100%;
 
     outline: var(--color-dark-500);
 
@@ -73,5 +74,23 @@ button {
     border-left: none;
 
     fill: var(--color-dark-700);
+  }
+}
+
+.DropdownMenuLabel {
+  position: relative;
+  width: 100%;
+
+  &:not(:last-of-type)::before {
+    content: '';
+
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: var(--color-dark-500);
   }
 }

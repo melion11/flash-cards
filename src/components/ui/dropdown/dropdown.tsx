@@ -48,6 +48,7 @@ export const CustomDropdown = forwardRef<ElementRef<typeof DropdownMenu.Trigger>
 
 type DropdownMenuItemType = {
   disabled?: boolean
+  style?: CSSProperties
   className?: string
 } & ComponentPropsWithoutRef<typeof DropdownMenu.Item>
 
@@ -57,12 +58,31 @@ export const DropdownMenuItem = forwardRef<
 >(({ children, className, ...props }: DropdownMenuItemType, forwardedRef) => {
   const classNames = {
     item: clsx(s.DropdownMenuItem, className),
-    separator: clsx(s.DropdownMenuSeparator),
   }
 
   return (
     <DropdownMenu.Item className={classNames.item} {...props} ref={forwardedRef}>
       {children}
     </DropdownMenu.Item>
+  )
+})
+
+type DropdownMenuLabelType = {
+  className?: string
+  style?: CSSProperties
+} & ComponentPropsWithoutRef<typeof DropdownMenu.Label>
+
+export const DropdownMenuLabel = forwardRef<
+  ElementRef<typeof DropdownMenu.Label>,
+  DropdownMenuLabelType
+>(({ children, className, ...props }: DropdownMenuLabelType, forwardedRef) => {
+  const classNames = {
+    label: clsx(s.DropdownMenuLabel, className),
+  }
+
+  return (
+    <DropdownMenu.Label className={classNames.label} {...props} ref={forwardedRef}>
+      {children}
+    </DropdownMenu.Label>
   )
 })
