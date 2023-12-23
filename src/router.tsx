@@ -1,14 +1,12 @@
 import {
   createBrowserRouter,
   Navigate,
-  NavLink,
   Outlet,
   RouteObject,
   RouterProvider,
 } from 'react-router-dom'
 
 import { Button } from './components/ui'
-import { DragnDropPage } from './DragnDropPape.tsx'
 import {
   useAddDeckMutation,
   useDeleteDeckMutation,
@@ -26,10 +24,6 @@ const privateRoutes: RouteObject[] = [
   {
     path: '/',
     element: <Decks />,
-  },
-  {
-    path: '/dragndrop',
-    element: <DragnDropPage />,
   },
 ]
 
@@ -93,7 +87,6 @@ function Decks() {
               </td>
             </tr>
           ))}
-          <NavLink to={'/dragndrop'}>dragndrop</NavLink>
         </tbody>
       </table>
     </>
