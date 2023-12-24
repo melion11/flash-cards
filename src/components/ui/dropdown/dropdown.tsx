@@ -26,7 +26,7 @@ export const CustomDropdown = forwardRef<ElementRef<typeof DropdownMenu.Trigger>
     return (
       <DropdownMenu.Root>
         <DropdownMenu.Trigger className={classNames.trigger} ref={ref} asChild>
-          {trigger ? trigger : <HamburgerMenuIcon />}
+          {trigger ? <div>{trigger}</div> : <HamburgerMenuIcon />}
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
@@ -34,7 +34,7 @@ export const CustomDropdown = forwardRef<ElementRef<typeof DropdownMenu.Trigger>
             style={style}
             loop
             align={align}
-            sideOffset={5}
+            sideOffset={12}
             {...restProps}
           >
             {children}

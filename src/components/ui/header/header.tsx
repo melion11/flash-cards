@@ -1,18 +1,21 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import logo from '../../../assets/Logo.png'
+import { Button } from '../button'
 
 import s from './header.module.scss'
+import { HeaderMenu } from './headerMenu/headerMenu.tsx'
 
-type HeaderProps = {} & ComponentPropsWithoutRef<'div'>
+export const Header = () => {
+  const isLogin = true
 
-export const Header = ({}: HeaderProps) => {
   return (
     <header>
-      <div>
-        <button>
+      <div className={s.headerWrapper}>
+        <NavLink to={'/'}>
           <img className={s.logo} src={logo} alt={'logo'} />
-        </button>
+        </NavLink>
+        {isLogin ? <HeaderMenu /> : <Button>Sign in</Button>}
       </div>
     </header>
   )

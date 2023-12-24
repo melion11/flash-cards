@@ -1,7 +1,19 @@
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 0;
+
+  background: var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-500);
+}
+
 .logo {
   cursor: pointer;
   width: 156px;
   height: 36px;
+  transition: 0.2s ease-in-out;
 
   &:hover {
     opacity: 0.8;
