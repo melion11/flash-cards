@@ -15,7 +15,11 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
 
     const pages = Math.floor(totalCount / itemsPerPage)
 
-    const pagesArray: number[] = Array.from({ length: pages }, (_, index) => index + 1)
+    const pagesArray: number[] = []
+
+    for (let i = 1; i <= pages; i++) {
+      pagesArray.push(i)
+    }
 
     const onChangePageHandler = (currentPage: number) => {
       onChangePage?.(currentPage)
