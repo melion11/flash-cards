@@ -1,6 +1,8 @@
+import { useState } from 'react'
+
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Pagination } from './pagination.tsx'
+import { Pagination, PaginationProps } from './pagination.tsx'
 
 const meta = {
   title: 'Components/Pagination',
@@ -12,12 +14,22 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => {
+  render: (args: PaginationProps) => {
+    const [currentPage, setCurrentPage] = useState(1)
+
+    const onChangePage = (currentPage: number) => {
+      setCurrentPage(currentPage)
+    }
+
     return (
       <div>
-        <Pagination />
+        <Pagination {...args} currentPage={currentPage} onChangePage={onChangePage} />
+        <p>Current page: {currentPage}</p>
       </div>
     )
   },
-  args: {},
+  args: {
+    totalCount: 500,
+    itemsPerPage: 10,
+  },
 }
