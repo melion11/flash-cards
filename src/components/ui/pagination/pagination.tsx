@@ -1,6 +1,72 @@
-export const Pagination = () => {
-  return <div></div>
-}
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+
+import s from './pagination.module.scss'
+
+export type PaginationProps = {
+  totalCount: number
+  itemsPerPage: number
+  currentPage: number
+  onChangePage?: (currentPage: number) => void
+} & ComponentPropsWithoutRef<'div'>
+
+export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
+  (props: PaginationProps, ref, ...restProps) => {
+    const { totalCount, itemsPerPage, currentPage, onChangePage } = props
+
+    const pages = Math.floor(totalCount / itemsPerPage)
+
+    const pagesArray: number[] = Array.from({ length: pages }, (_, index) => index + 1)
+
+    const onChangePageHandler = (currentPage: number) => {
+      onChangePage?.(currentPage)
+    }
+
+    const onChangeLeftPageHandler = () => {
+      if (currentPage === 1) {
+        onChangePage?.(currentPage)
+      } else {
+        onChangePage?.(currentPage - 1)
+      }
+    }
+
+    const onChangeRightPageHandler = () => {
+      if (currentPage >= pagesArray.length - 1) {
+        onChangePage?.(currentPage)
+      } else {
+        onChangePage?.(currentPage + 1)
+      }
+    }
+
+    return (
+      <div
+        className={s.Root}
+        {...restProps}
+        ref={ref}
+        style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+      >
+        <button onClick={onChangeLeftPageHandler} style={{ cursor: 'pointer' }}>
+          {'<'}
+        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
+          {pagesArray.map(page => {
+            return (
+              <button
+                onClick={() => onChangePageHandler(page)}
+                key={page}
+                className={page === currentPage ? s.active : ''}
+              >
+                {page}
+              </button>
+            )
+          })}
+        </div>
+        <button onClick={onChangeRightPageHandler} style={{ cursor: 'pointer' }}>
+          {'>'}
+        </button>
+      </div>
+    )
+  }
+)
 
 // export function App(props) {
 //   const [state, setState] = useState(0)
