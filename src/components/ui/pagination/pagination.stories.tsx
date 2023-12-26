@@ -17,8 +17,8 @@ export const Default: Story = {
   render: (args: PaginationProps) => {
     const [currentPage, setCurrentPage] = useState(1)
 
-    const onChangePage = (currentPage: number) => {
-      setCurrentPage(currentPage)
+    const onChangePage = (currentPage: number | string) => {
+      setCurrentPage(+currentPage)
     }
 
     return (
@@ -30,6 +30,7 @@ export const Default: Story = {
   },
   args: {
     totalCount: 500,
+    currentPage: 1,
     itemsPerPage: 10,
   },
 }

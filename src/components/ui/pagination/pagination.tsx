@@ -1,71 +1,77 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import { clsx } from 'clsx'
+
+import { ArrowLeft, ArrowRight } from '../../../assets'
+
 import s from './pagination.module.scss'
+import { DOTS, rangeNumbers } from './rangeNumbers.ts'
 
 export type PaginationProps = {
   totalCount: number
   itemsPerPage: number
   currentPage: number
-  onChangePage?: (currentPage: number) => void
+  siblingCount?: number
+  onChangePage?: (currentPage: number | string) => void
 } & ComponentPropsWithoutRef<'div'>
 
 export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
   (props: PaginationProps, ref, ...restProps) => {
-    const { totalCount, itemsPerPage, currentPage, onChangePage } = props
+    const { totalCount, siblingCount = 1, itemsPerPage, currentPage, onChangePage } = props
+    const pagesCount = Math.ceil(totalCount / itemsPerPage)
 
-    const pages = Math.floor(totalCount / itemsPerPage)
+    const pageNumbers = rangeNumbers(siblingCount, currentPage, pagesCount)
 
-    const pagesArray: number[] = []
-
-    for (let i = 1; i <= pages; i++) {
-      pagesArray.push(i)
-    }
-
-    const onChangePageHandler = (currentPage: number) => {
+    const onChangePageHandler = (currentPage: number | string) => {
       onChangePage?.(currentPage)
     }
 
     const onChangeLeftPageHandler = () => {
-      if (currentPage === 1) {
-        onChangePage?.(currentPage)
-      } else {
-        onChangePage?.(currentPage - 1)
-      }
+      if (currentPage > 1) onChangePage?.(currentPage - 1)
     }
 
     const onChangeRightPageHandler = () => {
-      if (currentPage >= pagesArray.length - 1) {
-        onChangePage?.(currentPage)
-      } else {
-        onChangePage?.(currentPage + 1)
-      }
+      if (currentPage < pagesCount) onChangePage?.(currentPage + 1)
+    }
+
+    const classNames = {
+      root: s.Root,
+      pagesWrapper: s.pagesWrapper,
+      prevBtn: clsx(s.btn),
+      nextBtn: clsx(s.btn),
     }
 
     return (
-      <div
-        className={s.Root}
-        {...restProps}
-        ref={ref}
-        style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
-      >
-        <button onClick={onChangeLeftPageHandler} style={{ cursor: 'pointer' }}>
-          {'<'}
+      <div className={classNames.root} {...restProps} ref={ref}>
+        <button
+          disabled={currentPage === 1}
+          onClick={onChangeLeftPageHandler}
+          className={classNames.prevBtn}
+        >
+          <ArrowLeft />
         </button>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3px', cursor: 'pointer' }}>
-          {pagesArray.map(page => {
+        <div className={classNames.pagesWrapper}>
+          {pageNumbers.map(page => {
             return (
               <button
                 onClick={() => onChangePageHandler(page)}
                 key={page}
-                className={page === currentPage ? s.active : ''}
+                className={`${s.page} 
+                ${page === currentPage ? s.active : ''} 
+                ${page === DOTS ? s.dots : s.page}`}
+                disabled={page === DOTS}
               >
                 {page}
               </button>
             )
           })}
         </div>
-        <button onClick={onChangeRightPageHandler} style={{ cursor: 'pointer' }}>
-          {'>'}
+        <button
+          disabled={currentPage === pagesCount}
+          onClick={onChangeRightPageHandler}
+          className={classNames.nextBtn}
+        >
+          <ArrowRight />
         </button>
       </div>
     )
@@ -113,64 +119,4 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
 //       <h1>Hello React</h1>
 //     </div>
 //   )
-// }
-
-// import { FC } from "react";
-// import "./styles.css";
-//
-// // Описать типы при необходимости
-// type SliderPropertyType = {
-//   data: number[];
-// };
-//
-// // Задачу выполнить максимально правильно,
-// // учитывая все мелочи, но без верстки
-// // но без дополнительных библиотек, например без Redux.
-//
-// // Реализовать слайдер:
-// // 1. Слайдер должен показывать текущий слайд,
-// // можно поворачивать слайдер налево и направо,
-// // при достижении границы массива (первый или последний),
-// // нужно перевести текущий слайд в противоположный конец.
-// // 2. Сделать кнопки старт и стоп,
-// // которые запустят автоматическую прокрутку слайдера вправо,
-// // или остановят ее.
-//
-// const Slider: FC<SliderPropertyType> = ({ data }) => {
-//   return (
-//       <div className="Slider">
-//         <button>turn left</button>
-//
-//         <div className="Items">
-//           <span className="Item">item1</span>
-//           <span className="Item">item2</span>
-//           <span className="Item">item3</span>
-//         </div>
-//
-//         <button>turn right</button>
-//       </div>
-//   );
-// };
-//
-// export default function App() {
-//   const data = new Array(5).fill(null).map((_, index) => index + 1);
-//
-//   return (
-//       <div className="Wrapper">
-//         {/* Отобразить текущий слайд */}
-//         <div>Текущий слайд</div>
-//
-//         <Slider data={data} />
-//
-//         {/* Реализовать Кнопку Start,
-//           должна запускаться карусель направо,
-//           раз в 1 секунду, при кнопке Stop, карусель должна
-//           остановится
-//       */}
-//         <div className="Buttons">
-//           <button className="Button">start</button>
-//           <button className="Button">stop</button>
-//         </div>
-//       </div>
-//   );
 // }
