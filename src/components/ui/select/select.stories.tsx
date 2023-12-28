@@ -19,7 +19,7 @@ const initialState = [
   { value: 'fourth', name: 'Fourth Select', disabled: true },
 ]
 
-export const CustomSelectDefault = {
+export const Default = {
   render: (args: CustomSelectProps) => {
     const [value, setValue] = useState(initialState[1].value)
     const onChangeHandler = (value: string) => {

@@ -12,7 +12,7 @@ const meta = {
 
 export default meta
 
-export const RadioSliderDefault = {
+export const Default = {
   render: () => {
     const min = 0
     const max = 15

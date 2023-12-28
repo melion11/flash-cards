@@ -20,7 +20,7 @@ export const Default: Story = {
   },
 }
 
-export const TextFieldWithError: Story = {
+export const WithError: Story = {
   args: {
     placeholder: 'Input',
     label: 'Input',
@@ -30,7 +30,7 @@ export const TextFieldWithError: Story = {
   },
 }
 
-export const TextFieldPassword: Story = {
+export const Password: Story = {
   args: {
     placeholder: 'Password',
     disabled: false,
@@ -40,7 +40,7 @@ export const TextFieldPassword: Story = {
   },
 }
 
-export const TextFieldSearch: Story = {
+export const Search: Story = {
   args: {
     placeholder: 'Search',
     disabled: false,
