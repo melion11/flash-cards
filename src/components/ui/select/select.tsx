@@ -1,6 +1,5 @@
 import { ComponentPropsWithoutRef, CSSProperties, ElementRef, forwardRef } from 'react'
 
-import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import * as Select from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
@@ -25,6 +24,7 @@ export type CustomSelectProps = {
   placeholder?: string
   options?: SelectOption[]
   width?: CSSProperties['width']
+  pagination?: boolean
 } & ComponentPropsWithoutRef<typeof Select.Root>
 
 export const CustomSelect = forwardRef<ElementRef<typeof Select.Root>, CustomSelectProps>(
@@ -38,6 +38,7 @@ export const CustomSelect = forwardRef<ElementRef<typeof Select.Root>, CustomSel
       disabled,
       defaultValue,
       errorMessage,
+      pagination,
       onValueChange,
       value,
       options,
@@ -45,8 +46,8 @@ export const CustomSelect = forwardRef<ElementRef<typeof Select.Root>, CustomSel
     } = props
 
     const classNames = {
-      label: clsx(s.SelectLabel, disabled && s.disabled),
-      trigger: clsx(s.SelectTrigger, errorMessage && s.error, className),
+      label: clsx(s.SelectLabel, disabled && s.disabled, className),
+      trigger: clsx(s.SelectTrigger, errorMessage && s.error, pagination && s.pagination),
       triggerIcon: s.SelectIcon,
       content: s.SelectContent,
       scrollButton: s.SelectScrollButton,
@@ -66,38 +67,30 @@ export const CustomSelect = forwardRef<ElementRef<typeof Select.Root>, CustomSel
     const rootStyle = { width }
 
     return (
-      <>
-        <Label label={label} className={classNames.label} style={rootStyle}>
-          <Select.Root
-            onValueChange={onValueChange}
-            value={value}
-            defaultValue={defaultValue}
-            disabled={disabled}
-            {...restProps}
-          >
-            <Select.Trigger className={classNames.trigger} ref={ref}>
-              <Select.Value placeholder={placeholder} />
-              <Select.Icon className={classNames.triggerIcon} asChild>
-                <ArrowDown />
-              </Select.Icon>
-            </Select.Trigger>
-            <Select.Portal>
-              <Select.Content className={classNames.content} position={'popper'}>
-                <Select.ScrollUpButton className={classNames.scrollButton}>
-                  <ChevronUpIcon />
-                </Select.ScrollUpButton>
-                <Select.Viewport className={classNames.viewport} asChild>
-                  <Select.Group>{selectOptions}</Select.Group>
-                </Select.Viewport>
-                <Select.ScrollDownButton className={classNames.scrollButton}>
-                  <ChevronDownIcon />
-                </Select.ScrollDownButton>
-              </Select.Content>
-            </Select.Portal>
-          </Select.Root>
-        </Label>
+      <Label label={label} className={classNames.label} style={rootStyle}>
+        <Select.Root
+          onValueChange={onValueChange}
+          value={value}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          {...restProps}
+        >
+          <Select.Trigger className={classNames.trigger} ref={ref}>
+            <Select.Value placeholder={placeholder} />
+            <Select.Icon className={classNames.triggerIcon} asChild>
+              <ArrowDown />
+            </Select.Icon>
+          </Select.Trigger>
+          <Select.Portal>
+            <Select.Content className={classNames.content} position={'popper'}>
+              <Select.Viewport className={classNames.viewport} asChild>
+                <Select.Group>{selectOptions}</Select.Group>
+              </Select.Viewport>
+            </Select.Content>
+          </Select.Portal>
+        </Select.Root>
         {showError && <Typography variant={'error'}>{errorMessage}</Typography>}
-      </>
+      </Label>
     )
   }
 )

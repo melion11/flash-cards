@@ -12,6 +12,7 @@ import { usePagination } from './usePagination.ts'
 export type PaginationProps = {
   totalCount: number
   itemsPerPage: number
+  showPerPageSelect?: boolean
   currentPage: number
   siblingCount?: number
   options?: SelectOption[]
@@ -28,6 +29,7 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
       siblingCount = 1,
       itemsPerPage,
       currentPage,
+      showPerPageSelect,
       onChangePage,
     } = props
     const pagesCount = Math.ceil(totalCount / itemsPerPage)
@@ -95,20 +97,23 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
             <ArrowRight />
           </button>
         </div>
-        <div className={s.selectWrapper}>
-          <Typography as={'span'} variant={'body2'} className={s.selectText}>
-            Show
-          </Typography>
-          <CustomSelect
-            className={s.select}
-            value={itemsPerPage.toString()}
-            options={options}
-            onValueChange={onChangeSizeHandler}
-          />
-          <Typography as={'span'} variant={'body2'} className={s.selectText}>
-            on the page
-          </Typography>
-        </div>
+        {showPerPageSelect && (
+          <div className={s.selectWrapper}>
+            <Typography as={'span'} variant={'body2'} className={s.selectText}>
+              Show
+            </Typography>
+            <CustomSelect
+              className={s.select}
+              value={itemsPerPage.toString()}
+              options={options}
+              pagination
+              onValueChange={onChangeSizeHandler}
+            />
+            <Typography as={'span'} variant={'body2'} className={s.selectText}>
+              on the page
+            </Typography>
+          </div>
+        )}
       </div>
     )
   }
