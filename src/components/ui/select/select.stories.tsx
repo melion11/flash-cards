@@ -38,6 +38,6 @@ export const CustomSelectDefault = {
     options: initialState,
     label: 'Select-box',
     disabled: false,
-    errorMessage: 'Error message',
+    errorMessage: '',
   },
 }

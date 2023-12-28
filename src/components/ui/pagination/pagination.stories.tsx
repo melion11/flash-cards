@@ -37,7 +37,14 @@ export const Default: Story = {
     }
 
     return (
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          height: 'min-content',
+        }}
+      >
         <Pagination
           {...args}
           currentPage={currentPage}
@@ -54,5 +61,6 @@ export const Default: Story = {
     totalCount: 500,
     currentPage: 1,
     itemsPerPage: 10,
+    showPerPageSelect: true,
   },
 }
