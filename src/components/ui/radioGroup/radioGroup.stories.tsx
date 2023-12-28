@@ -28,6 +28,14 @@ export const Default: Story = {
     options: initialState,
     defaultValue: initialState[1].value,
     disabled: false,
+  },
+}
+
+export const WithError: Story = {
+  args: {
+    options: initialState,
+    defaultValue: initialState[1].value,
+    disabled: false,
     errorMessage: 'Error message',
   },
 }

@@ -4,7 +4,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import { clsx } from 'clsx'
 
 import Check from '../../../assets/icons/check.tsx'
-import { Label } from '../label/label.tsx'
+import { Label } from '../label'
 import { Typography } from '../typography'
 
 import s from './checkbox.module.scss'
