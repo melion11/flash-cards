@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { Button } from './components/ui'
+import { PageNotFound } from './pages'
 import {
   useAddDeckMutation,
   useDeleteDeckMutation,
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
   ...publicRoutes,
   {
     path: '*',
-    element: <div>Error 404</div>,
+    element: <PageNotFound />,
   },
 ])
 

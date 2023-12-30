@@ -1,0 +1,20 @@
+.Root {
+  width: 100%;
+  max-width: 117rem;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 10rem 1.5rem;
+}
+
+.image {
+  width: 100%;
+  margin: 0 auto 4.2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
