@@ -4,7 +4,7 @@ import { withRouter, reactRouterParameters } from 'storybook-addon-react-router-
 import { Header } from '../header'
 
 const meta = {
-  title: 'components/Header',
+  title: 'Components/Layout/Header',
   component: Header,
   tags: ['autodocs'],
   decorators: [withRouter],

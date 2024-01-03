@@ -6,7 +6,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { CustomRadioGroup } from './radioGroup.tsx'
 
 const meta = {
-  title: 'Components/RadioGroup',
+  title: 'Components/Data Entry/RadioGroup',
   component: CustomRadioGroup,
   tags: ['autodocs'],
   argTypes: {

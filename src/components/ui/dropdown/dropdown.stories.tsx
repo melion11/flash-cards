@@ -6,7 +6,7 @@ import { CustomAvatar } from '../avatar/avatar.tsx'
 import { CustomDropdown, DropdownMenuItem, DropdownMenuLabel } from './dropdown.tsx'
 
 const meta = {
-  title: 'Components/Dropdown',
+  title: 'Components/Disclosure/Dropdown',
   component: CustomDropdown,
   tags: ['autodocs'],
   parameters: {},

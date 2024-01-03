@@ -5,7 +5,7 @@ import type { Meta } from '@storybook/react'
 import { CustomSelect, CustomSelectProps } from './select.tsx'
 
 const meta = {
-  title: 'components/CustomSelect',
+  title: 'Components/Data Entry/CustomSelect',
   component: CustomSelect,
   tags: ['autodocs'],
 } satisfies Meta<typeof CustomSelect>

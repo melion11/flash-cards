@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { CustomAvatar } from './avatar.tsx'
 
 const meta = {
-  title: 'Components/Avatar',
+  title: 'Components/Data Display/Avatar',
   component: CustomAvatar,
   tags: ['autodocs'],
 } satisfies Meta<typeof CustomAvatar>
