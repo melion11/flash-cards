@@ -1,12 +1,17 @@
+@import '@styles/mixins';
+
+.root {
+  background-color: var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-500);
+}
+
 .headerWrapper {
+  @include container;
+
   display: flex;
   align-items: center;
-  justify-content: space-around;
-
-  padding: 12px 0;
-
-  background: var(--color-dark-700);
-  border-bottom: 1px solid var(--color-dark-500);
+  justify-content: space-between;
+  height: 6rem;
 }
 
 .logoLink {
