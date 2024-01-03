@@ -110,7 +110,7 @@ devDependencies:
     specifier: 0.2.1
     version: 0.2.1
   '@types/node':
-    specifier: ^20.6.2
+    specifier: ^20.7.0
     version: 20.7.0
   '@types/react':
     specifier: ^18.2.15
@@ -147,7 +147,7 @@ devDependencies:
     version: 7.4.2
   storybook-addon-react-router-v6:
     specifier: ^2.0.10
-    version: 2.0.10(@storybook/blocks@7.4.2)(@storybook/channels@7.4.2)(@storybook/components@7.4.2)(@storybook/core-events@7.4.2)(@storybook/manager-api@7.4.2)(@storybook/preview-api@7.4.2)(@storybook/theming@7.4.2)(react-dom@18.2.0)(react-router-dom@6.21.0)(react@18.2.0)
+    version: 2.0.10(@storybook/blocks@7.4.2)(@storybook/channels@7.4.2)(@storybook/components@7.4.2)(@storybook/core-events@7.6.6)(@storybook/manager-api@7.4.2)(@storybook/preview-api@7.4.2)(@storybook/theming@7.4.2)(react-dom@18.2.0)(react-router-dom@6.21.0)(react@18.2.0)
   stylelint:
     specifier: ^15.10.3
     version: 15.10.3(typescript@5.2.2)
@@ -9418,7 +9418,7 @@ packages:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
     dev: true
 
-  /storybook-addon-react-router-v6@2.0.10(@storybook/blocks@7.4.2)(@storybook/channels@7.4.2)(@storybook/components@7.4.2)(@storybook/core-events@7.4.2)(@storybook/manager-api@7.4.2)(@storybook/preview-api@7.4.2)(@storybook/theming@7.4.2)(react-dom@18.2.0)(react-router-dom@6.21.0)(react@18.2.0):
+  /storybook-addon-react-router-v6@2.0.10(@storybook/blocks@7.4.2)(@storybook/channels@7.4.2)(@storybook/components@7.4.2)(@storybook/core-events@7.6.6)(@storybook/manager-api@7.4.2)(@storybook/preview-api@7.4.2)(@storybook/theming@7.4.2)(react-dom@18.2.0)(react-router-dom@6.21.0)(react@18.2.0):
     resolution: {integrity: sha512-HnrjbujAW1oGCdgvv7W6QKskETNXvt0U5qR2pKD8GXHlqkV9wmWa6HW3J0ks0aiBJBsRrPdEViatrhnRD5RZZw==}
     peerDependencies:
       '@storybook/blocks': ^7.0.0
@@ -9440,7 +9440,7 @@ packages:
       '@storybook/blocks': 7.4.2(@types/react-dom@18.2.7)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/channels': 7.4.2
       '@storybook/components': 7.4.2(@types/react-dom@18.2.7)(@types/react@18.2.22)(react-dom@18.2.0)(react@18.2.0)
-      '@storybook/core-events': 7.4.2
+      '@storybook/core-events': 7.6.6
       '@storybook/manager-api': 7.4.2(react-dom@18.2.0)(react@18.2.0)
       '@storybook/preview-api': 7.4.2
       '@storybook/theming': 7.4.2(react-dom@18.2.0)(react@18.2.0)

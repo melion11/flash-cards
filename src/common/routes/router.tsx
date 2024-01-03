@@ -1,95 +1,33 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  Outlet,
-  RouteObject,
-  RouterProvider,
-} from 'react-router-dom'
+import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom'
 
-import { Button } from '../../components/ui'
-import { PageNotFound } from '../../pages'
-import {
-  useAddDeckMutation,
-  useDeleteDeckMutation,
-  useGetDecksQuery,
-} from '../../services/deck.service.ts'
+import { Route } from '@/common'
+import { PrivateRoutes } from '@common/routes/private-routes.tsx'
+import { privateRoutes, publicRoutes } from '@common/routes/router-settings.tsx'
+import { Header } from '@components/ui'
+import { Toast } from '@components/ui/toast'
 
-const publicRoutes: RouteObject[] = [
-  {
-    path: '/login',
-    element: <div>Login</div>,
-  },
-]
-
-const privateRoutes: RouteObject[] = [
-  {
-    path: '/',
-    element: <Decks />,
-  },
-]
-
-const router = createBrowserRouter([
-  {
-    element: <PrivateRoutes />,
-    children: privateRoutes,
-  },
-  ...publicRoutes,
-  {
-    path: '*',
-    element: <PageNotFound />,
-  },
-])
-
-export const Router = () => {
-  return <RouterProvider router={router} />
-}
-
-function PrivateRoutes() {
-  const isAuthenticated = true
-
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
-}
-
-function Decks() {
-  const { data } = useGetDecksQuery()
-  const [addDeck] = useAddDeckMutation()
-  const [deleteDeck] = useDeleteDeckMutation()
-
-  const addNewDeck = () => {
-    addDeck({ name: 'new deck1' })
-  }
-
+const AppLayout = () => {
   return (
     <>
-      <Button variant={'primary'} onClick={addNewDeck}>
-        New Deck
-      </Button>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Cards</th>
-            <th>Last Updated</th>
-            <th>Created by</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.items.map(item => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.cardsCount}</td>
-              <td>{new Date(item.updated).toLocaleDateString()}</td>
-              <td>{item.author.name}</td>
-              <td>{item.id}</td>
-              <td>
-                <Button onClick={() => deleteDeck(item.id)}>Delete</Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Toast />
+      <Header />
+      <Outlet />
     </>
   )
 }
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    errorElement: <Navigate to={Route.NotFound} />,
+    children: [
+      {
+        element: <PrivateRoutes />,
+        children: privateRoutes,
+      },
+      ...publicRoutes,
+    ],
+  },
+])
+
+export const Router = () => <RouterProvider router={router} />
