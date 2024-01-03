@@ -6,7 +6,6 @@ module.exports = {
       rules: {
         'react-hooks/rules-of-hooks': 'off',
         'no-console': 'off',
-        'import/export': 0
       },
     },
   ],
