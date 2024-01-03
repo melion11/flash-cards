@@ -2,11 +2,19 @@ import { Navigate, RouteObject } from 'react-router-dom'
 
 import { Route } from '@/common'
 import { PageNotFound } from '@/pages'
+import { Page } from '@components/ui'
 
 export const privateRoutes: RouteObject[] = [
   { path: Route.Main, element: <Navigate to={Route.Decks} /> },
   { path: Route.Profile, element: <div>ProfilePage</div> },
-  { path: Route.Decks, element: <div className={'container'}>DecksPage</div> },
+  {
+    path: Route.Decks,
+    element: (
+      <Page>
+        <div>DecksPage</div>
+      </Page>
+    ),
+  },
   { path: `${Route.Decks}/:id/cards`, element: <div>DeckPage</div> },
   { path: `${Route.Decks}/:id/learn`, element: <div>LearnPage</div> },
 ]
