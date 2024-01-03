@@ -1,12 +1,18 @@
 .headerWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
   padding: 12px 0;
 
   background: var(--color-dark-700);
   border-bottom: 1px solid var(--color-dark-500);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {

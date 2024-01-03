@@ -3,8 +3,7 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-rou
 import { Route } from '@/common'
 import { PrivateRoutes } from '@common/routes/private-routes.tsx'
 import { privateRoutes, publicRoutes } from '@common/routes/router-settings.tsx'
-import { Header } from '@components/ui'
-import { Toast } from '@components/ui/toast'
+import { Header, Toast } from '@components/ui'
 
 const AppLayout = () => {
   return (
