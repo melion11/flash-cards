@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header>
       <div className={s.headerWrapper}>
-        <NavLink to={'/'}>
+        <NavLink className={s.logoLink} to={'/'}>
           <img className={s.logo} src={logo} alt={'logo'} />
         </NavLink>
         {isLogin ? <HeaderMenu /> : <Button>Sign in</Button>}
