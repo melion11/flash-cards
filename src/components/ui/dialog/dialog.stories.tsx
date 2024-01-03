@@ -7,7 +7,7 @@ import { Button } from '../button'
 import { DialogModal, DialogModalProps } from './dialog.tsx'
 
 const meta = {
-  title: 'Components/DialogModal',
+  title: 'Components/Feedback/DialogModal',
   component: DialogModal,
   tags: ['autodocs'],
 } satisfies Meta<typeof DialogModal>

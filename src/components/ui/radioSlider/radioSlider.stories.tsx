@@ -5,7 +5,7 @@ import type { Meta } from '@storybook/react'
 import { RadioSlider } from './radioSlider.tsx'
 
 const meta = {
-  title: 'components/RadioSlider',
+  title: 'Components/Data Entry/RadioSlider',
   component: RadioSlider,
   tags: ['autodocs'],
 } satisfies Meta<typeof RadioSlider>

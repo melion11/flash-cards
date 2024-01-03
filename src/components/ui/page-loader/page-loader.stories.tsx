@@ -7,7 +7,7 @@ import { Button } from '../button'
 import { PageLoader } from './page-loader.tsx'
 
 const meta = {
-  title: 'components/PageLoader',
+  title: 'Components/Feedback/PageLoader',
   component: PageLoader,
   tags: ['autodocs'],
 } satisfies Meta<typeof PageLoader>

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { TabsSwitcher } from './tab-switcher'
 
 const meta = {
-  title: 'Components/TabsSwitcher',
+  title: 'Components/Navigation/TabsSwitcher',
   component: TabsSwitcher,
   tags: ['autodocs'],
 } satisfies Meta<typeof TabsSwitcher>

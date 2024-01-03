@@ -6,7 +6,7 @@ import { Typography } from '../typography'
 import { Card } from './card.tsx'
 
 const meta = {
-  title: 'components/Card',
+  title: 'Components/Data Display/Card',
   component: Card,
   tags: ['autodocs'],
 } satisfies Meta<typeof Card>

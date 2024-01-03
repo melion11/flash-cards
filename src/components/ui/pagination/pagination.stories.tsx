@@ -7,7 +7,7 @@ import { SelectOption } from '../select'
 import { Pagination, PaginationProps } from './pagination.tsx'
 
 const meta = {
-  title: 'Components/Pagination',
+  title: 'Components/Navigation/Pagination',
   component: Pagination,
   tags: ['autodocs'],
 } satisfies Meta<typeof Pagination>

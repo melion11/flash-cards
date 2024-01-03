@@ -6,13 +6,13 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 
-import { Button } from './components/ui'
-import { PageNotFound } from './pages'
+import { Button } from '../../components/ui'
+import { PageNotFound } from '../../pages'
 import {
   useAddDeckMutation,
   useDeleteDeckMutation,
   useGetDecksQuery,
-} from './services/deck.service.ts'
+} from '../../services/deck.service.ts'
 
 const publicRoutes: RouteObject[] = [
   {

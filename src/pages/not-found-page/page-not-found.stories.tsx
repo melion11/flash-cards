@@ -4,7 +4,7 @@ import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-
 import { PageNotFound } from './page-not-found.tsx'
 
 const meta = {
-  title: 'components/PageNotFound',
+  title: 'Components/Illustrations/PageNotFound',
   component: PageNotFound,
   tags: ['autodocs'],
   decorators: [withRouter],

@@ -7,7 +7,7 @@ import { FileIcon } from '../../../assets'
 import { FileLoader, FileLoaderProps } from './fileLoader.tsx'
 
 const meta = {
-  title: 'Components/FileLoader',
+  title: 'Components/Data Entry/FileLoader',
   component: FileLoader,
   tags: ['autodocs'],
   parameters: {},
@@ -26,6 +26,7 @@ export const Default: Story = {
 
       reader.onload = e => {
         // Get the URL or base64 string from the reader's result
+        // @ts-ignore
         const fileDataURL = e.target?.result
         // Do something with the fileDataURL (e.g., save it to state or display it)
       }

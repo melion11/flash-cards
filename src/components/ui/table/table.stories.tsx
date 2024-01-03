@@ -13,7 +13,7 @@ import { Column, Sort, TableHeader } from './table-header'
 import { Table } from './table.tsx'
 
 const meta: Meta<typeof Table.Root> = {
-  title: 'Components/Table',
+  title: 'Components/Data Display/Table',
   component: Table.Root,
   tags: ['autodocs'],
 }

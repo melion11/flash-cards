@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { CustomCheckbox } from './checkbox.tsx'
 
 const meta = {
-  title: 'Components/CustomCheckbox',
+  title: 'Components/Data Entry/CustomCheckbox',
   component: CustomCheckbox,
   tags: ['autodocs'],
 } satisfies Meta<typeof CustomCheckbox>

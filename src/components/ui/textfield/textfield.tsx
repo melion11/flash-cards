@@ -2,10 +2,8 @@ import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'rea
 
 import { clsx } from 'clsx'
 
-import EyeOff from '../../../assets/icons/eyeOff.tsx'
-import EyeOn from '../../../assets/icons/eyeOn.tsx'
-import Search from '../../../assets/icons/search.tsx'
-import { Label } from '../label/label.tsx'
+import { EyeOff, EyeOn, Search } from '../../../assets'
+import { Label } from '../label'
 import { Typography } from '../typography'
 
 import s from './textfield.module.scss'
