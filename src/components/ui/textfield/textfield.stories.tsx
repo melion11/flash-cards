@@ -17,6 +17,7 @@ export const Default: Story = {
     disabled: false,
     search: false,
     label: 'Input',
+    id: 'input',
   },
 }
 
@@ -27,6 +28,7 @@ export const WithError: Story = {
     disabled: false,
     search: false,
     errorMessage: 'Error!',
+    id: 'input',
   },
 }
 
@@ -37,6 +39,7 @@ export const Password: Story = {
     search: false,
     type: 'password',
     label: 'Password',
+    id: 'input',
   },
 }
 

@@ -27,6 +27,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
     className,
     label,
     type,
+    id,
     ...restProps
   } = props
 
@@ -46,7 +47,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   }
 
   const labelJSX = label && (
-    <Typography className={classNames.label} variant={'body2'} as={'label'} htmlFor={'input'}>
+    <Typography className={classNames.label} variant={'body2'} as={'label'} htmlFor={id}>
       {label}
     </Typography>
   )
@@ -61,7 +62,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
       {search && <Search className={classNames.searchIcon} />}
       <div className={s.inputWrapper}>
         <input
-          id={'input'}
+          id={id}
           autoFocus
           type={finalType}
           value={value}
