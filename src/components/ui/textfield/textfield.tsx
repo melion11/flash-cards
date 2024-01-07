@@ -2,7 +2,6 @@ import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'rea
 
 import { clsx } from 'clsx'
 
-import { Label } from '../label'
 import { Typography } from '../typography'
 
 import s from './textfield.module.scss'
@@ -47,7 +46,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   }
 
   const labelJSX = label && (
-    <Typography className={classNames.label} variant={'body2'} as={'label'}>
+    <Typography className={classNames.label} variant={'body2'} as={'label'} htmlFor={'input'}>
       {label}
     </Typography>
   )
@@ -57,10 +56,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   const isShowButtonPassword = type === 'password'
 
   return (
-    <Label label={labelJSX}>
-      <div className={classNames.rootBlock}>
-        {search && <Search className={classNames.searchIcon} />}
+    <div className={classNames.rootBlock}>
+      {labelJSX}
+      {search && <Search className={classNames.searchIcon} />}
+      <div className={s.inputWrapper}>
         <input
+          id={'input'}
           autoFocus
           type={finalType}
           value={value}
@@ -80,9 +81,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
             {showPassword ? <EyeOn /> : <EyeOff />}
           </button>
         )}
-        {errorMessage && <Typography variant={'error'}>{errorMessage}</Typography>}
       </div>
-    </Label>
+      {errorMessage && <Typography variant={'error'}>{errorMessage}</Typography>}
+    </div>
   )
 })
 
