@@ -4,20 +4,35 @@ button {
 
 .rootBlock {
   position: relative;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 3.6rem;
+
+  border-radius: 2px;
 }
 
 .field {
+  cursor: text;
+
   width: 100%;
-  padding: 6px 12px;
+  height: 100%;
+  padding: 0 1.2rem;
 
   font-family: inherit;
+  font-size: var(--font-size-m);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-m);
 
   background: transparent;
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
-  outline: 0;
 
   transition: border-color 0.2s;
 
@@ -25,17 +40,9 @@ button {
     color: var(--color-dark-100);
   }
 
-  &:not(:disabled):hover {
-    background: var(--color-dark-700);
-  }
-
   &:focus-visible {
     border-color: var(--color-info-700);
     outline: 1px solid var(--color-info-700);
-  }
-
-  &:not(:disabled):active {
-    border: 1px solid var(--color-light-100);
   }
 
   &:disabled {
@@ -46,6 +53,15 @@ button {
   &.error {
     color: var(--color-danger-300);
     border-color: var(--color-danger-300);
+  }
+
+  &:not(:disabled):active {
+    border: 1px solid var(--color-light-100);
+  }
+
+  &:not(:disabled):hover {
+    background: var(--color-dark-700);
+    outline: 1px solid var(--color-dark-100);
   }
 }
 
@@ -67,7 +83,8 @@ button {
 
 .searchIcon {
   position: absolute;
-  top: 6px;
+  z-index: 999;
+  top: 5px;
   left: 12px;
 
   &.disabled {
