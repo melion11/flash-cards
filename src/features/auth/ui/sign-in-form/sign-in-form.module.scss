@@ -12,8 +12,8 @@
   }
 
   .forgotPassword {
-    margin-bottom: 66px;
-    text-align: right;
+    width: max-content;
+    margin: 0.6rem 0.9rem 6.6rem 0;
   }
 
   .submitBtn {
@@ -49,4 +49,10 @@
   justify-content: center;
 
   margin-bottom: 12px;
+}
+
+.forgotWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
