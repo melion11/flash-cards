@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -20,11 +20,9 @@ export type TypographyProps<T extends ElementType = 'p'> = {
     | 'link1'
     | 'link2'
     | 'error'
-  children?: ReactNode
-  className?: string
 } & ComponentPropsWithoutRef<T>
 export const Typography = <T extends ElementType = 'p'>(props: TypographyProps<T>) => {
-  const { variant = 'body1', children, className, as, ...rest } = props
+  const { variant = 'body1', className, as, ...rest } = props
 
   const classNames = {
     element: clsx(s[variant], className),
@@ -32,9 +30,5 @@ export const Typography = <T extends ElementType = 'p'>(props: TypographyProps<T
 
   const Component = as || 'p'
 
-  return (
-    <Component className={classNames.element} {...rest}>
-      {children}
-    </Component>
-  )
+  return <Component className={classNames.element} {...rest} />
 }

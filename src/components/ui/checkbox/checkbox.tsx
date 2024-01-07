@@ -12,16 +12,20 @@ import s from './checkbox.module.scss'
 type CheckboxProps = {
   id?: string
   label?: string
+  left?: boolean
 } & ComponentPropsWithoutRef<typeof Checkbox.Root>
 
 export const CustomCheckbox = forwardRef<ElementRef<typeof Checkbox.Root>, CheckboxProps>(
-  ({ id, label, disabled, checked, required, onCheckedChange }: CheckboxProps, ref) => {
+  (
+    { id, label, disabled, checked, required, onCheckedChange, left, className }: CheckboxProps,
+    ref
+  ) => {
     const classNames = {
-      wrapper: clsx(s.wrapper),
+      wrapper: clsx(s.wrapper, className),
       root: clsx(s.checkboxRoot),
       indicator: clsx(s.checkboxIndicator),
       label: s.label,
-      buttonWrapper: s.buttonWrapper,
+      buttonWrapper: clsx(s.buttonWrapper, left && s.left),
     }
 
     return (
