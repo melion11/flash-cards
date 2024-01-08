@@ -10,6 +10,7 @@ import { Button } from '@components/ui'
 type EditProfileProps = {
   username: string
   onSubmit: (data: EditProfileFormValues) => void
+  setEditMode: (value: boolean) => void
 }
 
 export type EditProfileFormValues = z.infer<typeof EditProfileSchema>
@@ -18,7 +19,7 @@ const EditProfileSchema = z.object({
   username: z.string().min(1, { message: 'Must be 1 or more characters long' }),
 })
 
-export const EditProfile = ({ username, onSubmit }: EditProfileProps) => {
+export const EditProfile = ({ username, onSubmit, setEditMode }: EditProfileProps) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
       username,
@@ -28,6 +29,7 @@ export const EditProfile = ({ username, onSubmit }: EditProfileProps) => {
 
   const handleSubmitHandler = (data: EditProfileFormValues) => {
     onSubmit(data)
+    setEditMode(false)
   }
 
   return (

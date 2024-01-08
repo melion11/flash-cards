@@ -7,6 +7,8 @@ import {
   useRef,
 } from 'react'
 
+import { clsx } from 'clsx'
+
 import { Button } from '../button'
 
 import s from './fileLoader.module.scss'
@@ -18,7 +20,7 @@ export type FileLoaderProps = {
 } & ComponentPropsWithoutRef<'div'>
 
 export const FileLoader = forwardRef<ElementRef<'div'>, FileLoaderProps>((props, ref) => {
-  const { title, onChangeFile, icon, ...restProps } = props
+  const { title, onChangeFile, className, icon, ...restProps } = props
 
   const fileRef = useRef<HTMLInputElement>(null)
 
@@ -33,8 +35,12 @@ export const FileLoader = forwardRef<ElementRef<'div'>, FileLoaderProps>((props,
     }
   }
 
+  const classNames = {
+    root: clsx(s.inputWrapper, className),
+  }
+
   return (
-    <div className={s.inputWrapper} {...restProps} ref={ref}>
+    <div className={classNames.root} {...restProps} ref={ref}>
       <input
         ref={fileRef}
         name={'file'}

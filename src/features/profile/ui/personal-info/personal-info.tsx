@@ -7,8 +7,13 @@ import { Button, Typography } from '@components/ui'
 type PersonalInfoProps = {
   username?: string
   email?: string
+  setEditMode: (value: boolean) => void
 }
-export const PersonalInfo = ({ username, email }: PersonalInfoProps) => {
+export const PersonalInfo = ({ username, email, setEditMode }: PersonalInfoProps) => {
+  const editModeHandler = () => {
+    setEditMode(true)
+  }
+
   return (
     <div className={s.root}>
       <div className={s.description}>
@@ -16,7 +21,9 @@ export const PersonalInfo = ({ username, email }: PersonalInfoProps) => {
           <Typography className={s.username} variant={TypographyVariant.H1}>
             {username}
           </Typography>
-          <EditIcon />
+          <button className={s.editBtn} onClick={editModeHandler}>
+            <EditIcon />
+          </button>
         </div>
         <Typography className={s.email} variant={TypographyVariant.Body2}>
           {email}

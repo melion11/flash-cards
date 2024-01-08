@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import s from './profile.module.scss'
 
 import { TypographyVariant } from '@/common'
@@ -6,18 +8,21 @@ import { EditProfile, ImageUploader } from '@features/profile'
 import { PersonalInfo } from '@features/profile/ui/personal-info'
 
 export const Profile = () => {
-  const editMode = true
+  const [editMode, setEditMode] = useState(false)
+
+  const username = 'Ivan'
+  const email = 'lalala@gmail.com'
 
   return (
     <Card className={s.root}>
       <Typography className={s.profileTitle} as={'h1'} variant={TypographyVariant.Large}>
         Personal Information
       </Typography>
-      <ImageUploader />
+      <ImageUploader editMode={editMode} />
       {editMode ? (
-        <EditProfile username={'Ivan'} onSubmit={() => {}} />
+        <EditProfile username={username} onSubmit={() => {}} setEditMode={setEditMode} />
       ) : (
-        <PersonalInfo username={'Ivan'} email={'lalala@gmail.com'} />
+        <PersonalInfo username={username} email={email} setEditMode={setEditMode} />
       )}
     </Card>
   )
