@@ -1,7 +1,10 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 
 import { Route } from '@/common'
-import { PageNotFound } from '@/pages'
+import { PageNotFound, SignIn } from '@/pages'
+import { CreateNewPassword } from '@pages/auth/create-new-password'
+import { ForgotPassword } from '@pages/auth/forgot-password'
+import { SignUp } from '@pages/auth/sign-up'
 
 export const privateRoutes: RouteObject[] = [
   { path: Route.Main, element: <Navigate to={Route.Decks} /> },
@@ -15,9 +18,9 @@ export const privateRoutes: RouteObject[] = [
 ]
 
 export const publicRoutes: RouteObject[] = [
-  { path: Route.SignIn, element: <div>SignInPage</div> },
-  { path: Route.SignUp, element: <div>SignUpPage</div> },
-  { path: Route.ForgotPassword, element: <div>ForgotPasswordPage</div> },
-  { path: `${Route.CreateNewPassword}/:token`, element: <div>CreateNewPasswordPage</div> },
+  { path: Route.SignIn, element: <SignIn /> },
+  { path: Route.SignUp, element: <SignUp /> },
+  { path: Route.ForgotPassword, element: <ForgotPassword /> },
+  { path: `${Route.CreateNewPassword}/:token`, element: <CreateNewPassword /> },
   { path: Route.NotFound, element: <PageNotFound /> },
 ]
