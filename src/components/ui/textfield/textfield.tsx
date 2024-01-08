@@ -8,7 +8,7 @@ import s from './textfield.module.scss'
 
 import { EyeOff, EyeOn, Search } from '@/assets'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   label?: string
   value?: string
   onChangeValue?: (value: string) => void
