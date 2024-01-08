@@ -8,7 +8,7 @@ export const SignIn = (props: SignInProps) => {
 
   return (
     <Page>
-      <SignInForm />
+      <SignInForm onSubmit={() => {}} />
     </Page>
   )
 }

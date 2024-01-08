@@ -1,42 +1,20 @@
 import { DevTool } from '@hookform/devtools'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
-import { z } from 'zod'
 
 import s from './sign-in-form.module.scss'
 
-import { ControlledCheckbox } from '@components/controlled'
-import { Button, Card, TextField, Typography } from '@components/ui'
+import { ControlledCheckbox, ControlledTextfield } from '@components/controlled'
+import { Button, Card, Typography } from '@components/ui'
+import { FormValues, useSignInForm } from '@features/auth/ui/sign-in-form/useSignInForm.ts'
 
 type SignInFormProps = {
   onSubmit: (data: FormValues) => void
 }
 
-export type FormValues = z.infer<typeof signInSchema>
-
-const signInSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address' }),
-  password: z.string().min(5, { message: 'Must be 5 or more characters long' }),
-  rememberMe: z.boolean(),
-})
-
 export const SignInForm = (props: SignInFormProps) => {
   const { onSubmit } = props
 
-  const {
-    control,
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<FormValues>({
-    defaultValues: {
-      email: '',
-      password: '',
-      rememberMe: false,
-    },
-    resolver: zodResolver(signInSchema),
-  })
+  const { handleSubmit, control, errors } = useSignInForm()
 
   const handleSubmitHandler = (data: FormValues) => {
     onSubmit(data)
@@ -49,16 +27,16 @@ export const SignInForm = (props: SignInFormProps) => {
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(handleSubmitHandler)}>
         <div className={s.inputsWrapper}>
-          <TextField
-            {...register('email')}
+          <ControlledTextfield
+            control={control}
             id={'email'}
             errorMessage={errors.email?.message}
             label={'Email'}
             name={'email'}
             placeholder={'Email'}
           />
-          <TextField
-            {...register('password')}
+          <ControlledTextfield
+            control={control}
             id={'password'}
             label={'Password'}
             errorMessage={errors.password?.message}
@@ -67,7 +45,7 @@ export const SignInForm = (props: SignInFormProps) => {
             placeholder={'Password'}
           />
         </div>
-        <ControlledCheckbox control={control} name={'rememberMe'} />
+        <ControlledCheckbox left control={control} name={'rememberMe'} label={'Remember me'} />
         <div className={s.forgotWrapper}>
           <Typography className={s.forgotPassword} to={'/forgot'} as={Link} variant={'body2'}>
             Forgot Password?
