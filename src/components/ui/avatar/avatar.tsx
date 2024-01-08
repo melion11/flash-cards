@@ -9,21 +9,21 @@ import s from './avatar.module.scss'
 
 type CustomAvatarProps = {
   image?: string
-  userName?: string
+  username?: string
   className?: string
   style?: CSSProperties
 } & ComponentPropsWithoutRef<typeof Avatar.Root>
 
 export const CustomAvatar = forwardRef<ElementRef<typeof Avatar.Root>, CustomAvatarProps>(
-  ({ userName, image, className, style, ...restProps }: CustomAvatarProps, ref) => {
+  ({ username, image, className, style, ...restProps }: CustomAvatarProps, ref) => {
     const classNames = {
-      root: clsx(s.avatarRoot),
-      image: clsx(s.avatarImage, className),
+      root: clsx(s.avatarRoot, className),
+      image: clsx(s.avatarImage),
       fallback: clsx(s.avatarFallback),
     }
 
-    const fallbackName = userName
-      ? userName
+    const fallbackName = username
+      ? username
           .split(' ')
           .map(el => el.slice(0, 1).toUpperCase())
           .join('')
