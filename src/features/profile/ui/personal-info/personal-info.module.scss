@@ -28,3 +28,10 @@
 .email {
   color: var(--color-dark-100);
 }
+
+.editBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
