@@ -1,30 +1,30 @@
 import { DevTool } from '@hookform/devtools'
 import { Link } from 'react-router-dom'
 
-import s from './sign-in-form.module.scss'
+import s from './sign-up-form.module.scss'
 
 import { Route, TypographyVariant } from '@/common'
-import { ControlledCheckbox, ControlledTextfield } from '@components/controlled'
+import { ControlledTextfield } from '@components/controlled'
 import { Button, Card, Typography } from '@components/ui'
-import { SignInFormValues, useSignInForm } from '@features/auth/ui/sign-in-form/useSignInForm.ts'
+import { SignUpFormValues, useSignUpForm } from '@features/auth/ui/sign-up-form/useSignUpForm.tsx'
 
-type SignInFormProps = {
-  onSubmit: (data: SignInFormValues) => void
+type SignUpFormProps = {
+  onSubmit: (data: SignUpFormValues) => void
 }
 
-export const SignInForm = (props: SignInFormProps) => {
+export const SignUpForm = (props: SignUpFormProps) => {
   const { onSubmit } = props
 
-  const { handleSubmit, control, errors } = useSignInForm()
+  const { handleSubmit, control, errors } = useSignUpForm()
 
-  const handleSubmitHandler = (data: SignInFormValues) => {
+  const handleSubmitHandler = (data: SignUpFormValues) => {
     onSubmit(data)
   }
 
   return (
     <Card className={s.root}>
       <Typography className={s.formTitle} as={'h1'} variant={TypographyVariant.Large}>
-        Sign In
+        Sign Up
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(handleSubmitHandler)}>
         <div className={s.inputsWrapper}>
@@ -45,32 +45,30 @@ export const SignInForm = (props: SignInFormProps) => {
             type={'password'}
             placeholder={'Password'}
           />
-        </div>
-        <ControlledCheckbox left control={control} name={'rememberMe'} label={'Remember me'} />
-        <div className={s.forgotWrapper}>
-          <Typography
-            className={s.forgotPassword}
-            to={Route.ForgotPassword}
-            as={Link}
-            variant={TypographyVariant.Body2}
-          >
-            Forgot Password?
-          </Typography>
+          <ControlledTextfield
+            control={control}
+            id={'confirmPassword'}
+            label={'Confirm Password'}
+            errorMessage={errors.confirmPassword?.message}
+            name={'confirmPassword'}
+            type={'password'}
+            placeholder={'Confirm Password'}
+          />
         </div>
         <Button className={s.submitBtn} fullWidth type={'submit'}>
-          Sign In
+          Sign Up
         </Button>
       </form>
       <Typography className={s.haveAccText} variant={TypographyVariant.Body2}>
-        Don`t have an account?
+        Already have an account?
       </Typography>
       <Typography
-        className={s.signUp}
-        to={Route.SignUp}
+        className={s.signIn}
+        to={Route.SignIn}
         as={Link}
         variant={TypographyVariant.Body2}
       >
-        Sign Up
+        Sign In
       </Typography>
       <DevTool control={control} />
     </Card>

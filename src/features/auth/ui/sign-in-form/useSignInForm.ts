@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-export type FormValues = z.infer<typeof signInSchema>
+export type SignInFormValues = z.infer<typeof signInSchema>
 
 const signInSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
@@ -15,7 +15,7 @@ export const useSignInForm = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({
+  } = useForm<SignInFormValues>({
     defaultValues: {
       email: '',
       password: '',
