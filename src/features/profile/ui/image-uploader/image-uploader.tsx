@@ -13,7 +13,7 @@ export const ImageUploader = ({ image, username, editMode }: ImageUploaderProps)
   return (
     <div className={s.avatarWrapper}>
       <CustomAvatar className={s.avatar} image={image} username={username} />
-      <div className={s.editBtn}>{!editMode && <FileLoader icon={<EditIcon />} />}</div>
+      {!editMode && <FileLoader className={s.editBtn} icon={<EditIcon />} />}
     </div>
   )
 }
