@@ -3,7 +3,7 @@ import { CheckEmail, ForgotPasswordForm } from '@features/auth'
 
 type SignInProps = {}
 
-export const ForgotPassword = (props: SignInProps) => {
+export const ForgotPasswordPage = (props: SignInProps) => {
   const {} = props
 
   const isSuccses = false
