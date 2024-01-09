@@ -3,7 +3,7 @@ import { CreateNewPasswordForm } from '@features/auth'
 
 type SignInProps = {}
 
-export const CreateNewPassword = (props: SignInProps) => {
+export const CreateNewPasswordPage = (props: SignInProps) => {
   const {} = props
 
   return (
