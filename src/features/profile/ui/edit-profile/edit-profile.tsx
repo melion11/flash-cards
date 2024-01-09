@@ -1,11 +1,13 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { DevTool } from '@hookform/devtools'
 
 import s from './edit-profile.module.scss'
 
 import { ControlledTextfield } from '@components/controlled'
 import { Button } from '@components/ui'
+import {
+  EditProfileFormValues,
+  useEditProfile,
+} from '@features/profile/ui/edit-profile/useEditProfile.ts'
 
 type EditProfileProps = {
   username: string
@@ -13,20 +15,8 @@ type EditProfileProps = {
   setEditMode: (value: boolean) => void
 }
 
-export type EditProfileFormValues = z.infer<typeof EditProfileSchema>
-
-const EditProfileSchema = z.object({
-  username: z.string().min(1, { message: 'Must be 1 or more characters long' }),
-})
-
 export const EditProfile = ({ username, onSubmit, setEditMode }: EditProfileProps) => {
-  const { handleSubmit, control } = useForm({
-    defaultValues: {
-      username,
-    },
-    resolver: zodResolver(EditProfileSchema),
-  })
-
+  const { handleSubmit, control, errors } = useEditProfile(username)
   const handleSubmitHandler = (data: EditProfileFormValues) => {
     onSubmit(data)
     setEditMode(false)
@@ -35,9 +25,17 @@ export const EditProfile = ({ username, onSubmit, setEditMode }: EditProfileProp
   return (
     <form className={s.root} onSubmit={handleSubmit(handleSubmitHandler)}>
       <div className={s.description}>
-        <ControlledTextfield control={control} name={'username'} label={'Nickmame'} />
+        <ControlledTextfield
+          control={control}
+          errorMessage={errors.username?.message}
+          name={'username'}
+          label={'Nickname'}
+        />
       </div>
-      <Button fullWidth>Save Changes</Button>
+      <Button type={'submit'} fullWidth>
+        Save Changes
+      </Button>
+      <DevTool control={control} />
     </form>
   )
 }
