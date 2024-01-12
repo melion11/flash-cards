@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
-import { Decks } from './decks.tsx'
+import { DecksPage } from '@/pages'
 
-const meta: Meta<typeof Decks> = {
-  title: 'Decks',
-  component: Decks,
+const meta: Meta<typeof DecksPage> = {
+  title: 'DecksPage',
+  component: DecksPage,
   decorators: [withRouter],
   parameters: {
     reactRouter: reactRouterParameters({

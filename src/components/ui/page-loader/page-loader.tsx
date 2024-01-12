@@ -14,7 +14,7 @@ export const PageLoader = (props: PageLoaderProps) => {
   const { circle, linear, className, ...restProps } = props
 
   const classNames = {
-    root: clsx(s.root, linear && s.linear, circle && s.circle, className),
+    root: clsx(s.root, className),
   }
 
   return (
