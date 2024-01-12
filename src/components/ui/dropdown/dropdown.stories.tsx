@@ -54,6 +54,6 @@ export const DefaultWithImage: Story = {
         </DropdownMenuItem>
       </>
     ),
-    trigger: <CustomAvatar style={{ cursor: 'pointer' }} userName={'Ilya Malav'} />,
+    trigger: <CustomAvatar style={{ cursor: 'pointer' }} username={'Ilya Malav'} />,
   },
 }
