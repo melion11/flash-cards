@@ -2,6 +2,9 @@
   display: flex;
   gap: 12px;
   align-items: center;
+
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
 }
 
 .sliderValue {
@@ -20,7 +23,7 @@
 
 .SliderRoot {
   touch-action: none;
-  cursor: grab;
+  cursor: pointer;
   user-select: none;
 
   position: relative;
