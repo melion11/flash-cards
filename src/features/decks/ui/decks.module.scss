@@ -1,14 +1,47 @@
 .root {
+  .headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+
+  .panelWrapper {
+    display: flex;
+    gap: 2.4rem;
+    align-items: flex-end;
+    justify-content: center;
+
+    margin-bottom: 36px;
+
+    .searchInput {
+      min-width: 30rem;
+    }
+
+    .tabs {
+      min-width: 23rem;
+    }
+
+    .radioSlider {
+      min-width: 25rem;
+    }
+
+    .clearFilterBtn {
+      min-width: 16rem;
+      margin-left: 1.2rem;
+    }
+  }
 }
 
-.headerWrapper {
+.tableRoot {
+  margin-bottom: 24px;
+}
+
+.iconsWrapper {
   display: flex;
+  gap: 1rem;
   align-items: center;
-  justify-content: space-between;
-}
+  justify-content: flex-end;
 
-.panelWrapper {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  height: 3.6rem;
 }

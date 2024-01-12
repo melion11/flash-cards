@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, CSSProperties, ElementRef, forwardRef } from 'react'
 
 import * as Slider from '@radix-ui/react-slider'
+import { clsx } from 'clsx'
 
 import s from './radioSlider.module.scss'
 
@@ -11,10 +12,14 @@ type RadioSliderProps = {
 } & ComponentPropsWithoutRef<typeof Slider.Root>
 export const RadioSlider = forwardRef<ElementRef<typeof Slider.Root>, RadioSliderProps>(
   (props: RadioSliderProps, ref) => {
-    const { defaultValue, onValueChange, max, min, value, step, ...restProps } = props
+    const { defaultValue, className, onValueChange, max, min, value, step, ...restProps } = props
+
+    const classNames = {
+      root: clsx(s.sliderWrapper, className),
+    }
 
     return (
-      <div className={s.sliderWrapper}>
+      <div className={classNames.root}>
         {value && <span className={s.sliderValue}>{value[0]}</span>}
         <Slider.Root
           className={s.SliderRoot}

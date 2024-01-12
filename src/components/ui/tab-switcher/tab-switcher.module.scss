@@ -1,12 +1,17 @@
 .tabsRoot {
   display: flex;
   flex-direction: column;
+
   width: 100%;
+
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
 }
 
 .tabsList {
   display: flex;
   flex-shrink: 0;
+  height: 3.6rem;
   border-radius: 2px;
 
   .tabsTrigger {
@@ -14,11 +19,13 @@
     user-select: none;
 
     display: flex;
-    flex: 1;
+    flex: 1 1;
     align-items: center;
     justify-content: center;
 
-    padding: 6px 24px;
+    padding: 0.5rem 2.4rem;
+
+    text-align: center;
 
     border-top: 1px solid var(--color-dark-300);
     border-right: 1px solid var(--color-dark-300);

@@ -7,6 +7,8 @@ import { Typography } from '../typography'
 
 import s from './tab-switcher.module.scss'
 
+import { TypographyVariant } from '@/common'
+
 export type SwitchOption = {
   label: string
   value: string
@@ -52,7 +54,7 @@ export const TabsSwitcher = forwardRef<ElementRef<typeof Tabs.Root>, TabSwitcher
         defaultValue={defaultValue}
         {...restProps}
       >
-        <Typography variant={'body2'}>{label}</Typography>
+        <Typography variant={TypographyVariant.Body2}>{label}</Typography>
         <Tabs.List className={classNames.tabsList} aria-label="Manage your account">
           {tabsJSX}
         </Tabs.List>
