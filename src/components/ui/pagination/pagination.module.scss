@@ -75,6 +75,7 @@
   }
 
   &:disabled {
+    cursor: default;
     color: var(--color-dark-100);
   }
 
